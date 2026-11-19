@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#090b14">
+  <meta name="description" content="Um relógio digital moderno com horas, minutos e segundos.">
+  <title>Relógio Digital</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="java.js" defer></script>
+</head>
+<body>
+  <main class="clock-card" aria-labelledby="page-title">
+    <header class="clock-header">
+      <span class="live-status">
+        <span class="status-dot" aria-hidden="true"></span>
+        AO VIVO
+      </span>
+    </header>
+
+    <section class="clock-content" aria-label="Relógio local">
+      <p class="eyebrow">O TEU TEMPO, AGORA</p>
+      <h1 id="page-title">Relógio Digital</h1>
+      <p class="date" id="date">A carregar a data...</p>
+
+      <div class="time-display" role="timer" aria-label="Hora local" aria-live="off">
+        <div class="time-unit">
+          <span class="digits" id="hours">00</span>
+          <span class="unit-label">HORAS</span>
+        </div>
+        <span class="separator" aria-hidden="true">:</span>
+        <div class="time-unit">
+          <span class="digits" id="minutes">00</span>
+          <span class="unit-label">MINUTOS</span>
+        </div>
+        <span class="separator" aria-hidden="true">:</span>
+        <div class="time-unit">
+          <span class="digits" id="seconds">00</span>
+          <span class="unit-label">SEGUNDOS</span>
+        </div>
+      </div>
+    </section>
+
+    <footer class="clock-footer">
+      <span>PRECISÃO AO TEU RITMO</span>
+      <span class="footer-mark" aria-hidden="true">◌</span>
+    </footer>
+  </main>
+</body>
+        </html>
