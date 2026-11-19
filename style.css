@@ -1,0 +1,221 @@
+/* Define as cores e os tamanhos reutilizados por toda a página. */
+:root {
+  color-scheme: dark;
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: #090b14;
+  color: #f5f6ff;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  --color-muted: #858ba3;
+  --color-accent: #ed8dc3;
+  --color-panel: rgba(18, 21, 37, 0.88);
+}
+
+/* Mantém a página centrada e cria o fundo escuro com brilho suave. */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+  display: grid;
+  place-items: center;
+  padding: 32px 20px;
+  background:
+    radial-gradient(ellipse at 50% 42%, rgba(220, 91, 166, 0.19), transparent 42%),
+    radial-gradient(ellipse at 50% 50%, rgba(101, 78, 201, 0.13), transparent 58%),
+    radial-gradient(ellipse at 10% 100%, rgba(24, 126, 160, 0.12), transparent 38%),
+    #090b14;
+}
+
+/* O cartão agrupa o cabeçalho, o relógio e o rodapé. */
+.clock-card {
+  width: min(100%, 920px);
+  overflow: hidden;
+  border: 1px solid rgba(237, 141, 195, 0.16);
+  border-radius: 28px;
+  background: var(--color-panel);
+  box-shadow:
+    0 32px 100px rgba(0, 0, 0, 0.5),
+    0 0 80px rgba(111, 87, 220, 0.08);
+  backdrop-filter: blur(18px);
+}
+
+.clock-header,
+.clock-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px 32px;
+}
+
+.clock-header {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.live-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+}
+
+.live-status {
+  margin-left: auto;
+  color: #a1a6bb;
+  font-size: 10px;
+}
+
+/* O ponto pulsante indica que o relógio está em funcionamento. */
+.status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  box-shadow: 0 0 12px rgba(237, 141, 195, 0.8);
+  animation: pulse 1.8s ease-in-out infinite;
+}
+
+.clock-content {
+  padding: 64px 32px 58px;
+  text-align: center;
+  background: radial-gradient(ellipse at 50% 58%, rgba(220, 91, 166, 0.12), transparent 58%);
+}
+
+.eyebrow {
+  margin: 0 0 12px;
+  color: var(--color-accent);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+}
+
+h1 {
+  margin: 0;
+  font-size: clamp(24px, 4vw, 34px);
+  font-weight: 600;
+  letter-spacing: -0.04em;
+}
+
+.date {
+  min-height: 24px;
+  margin: 12px 0 48px;
+  color: var(--color-muted);
+  font-size: 14px;
+  text-transform: capitalize;
+}
+
+/* Usa uma grelha para alinhar cada unidade, mesmo quando os dígitos mudam. */
+.time-display {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: clamp(5px, 1.4vw, 16px);
+  font-family: Consolas, "Courier New", monospace;
+  font-variant-numeric: tabular-nums;
+}
+
+.time-unit {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+/* O tamanho fluido adapta os números a ecrãs grandes e pequenos. */
+.digits {
+  color: #f2a5ce;
+  font-size: clamp(42px, 10vw, 104px);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.08em;
+  background: linear-gradient(180deg, #fff4fb 0%, #f2a5ce 58%, #e875b2 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 36px rgba(237, 141, 195, 0.18);
+}
+
+.unit-label {
+  color: #777e97;
+  font-family: "Segoe UI", Arial, sans-serif;
+  font-size: clamp(7px, 1.3vw, 10px);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
+.separator {
+  color: #9e6d8b;
+  font-size: clamp(34px, 7vw, 72px);
+  line-height: 0.95;
+}
+
+.clock-footer {
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+  color: #71778e;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+}
+
+.footer-mark {
+  color: var(--color-accent);
+  font-size: 19px;
+}
+
+@keyframes pulse {
+  50% {
+    opacity: 0.45;
+    box-shadow: 0 0 4px rgba(114, 224, 186, 0.5);
+  }
+}
+
+/* Em ecrãs estreitos, reduz os espaços para manter o relógio numa linha. */
+@media (max-width: 520px) {
+  body {
+    padding: 16px 12px;
+  }
+
+  .clock-card {
+    border-radius: 20px;
+  }
+
+  .clock-header,
+  .clock-footer {
+    padding: 18px 20px;
+  }
+
+  .clock-content {
+    padding: 48px 12px 42px;
+  }
+
+  .date {
+    margin-bottom: 38px;
+  }
+
+  .time-display {
+    gap: 4px;
+  }
+
+  .unit-label {
+    letter-spacing: 0.06em;
+  }
+}
+
+/* Respeita a preferência do utilizador para animações reduzidas. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
+}
